@@ -19,22 +19,22 @@
 
   <!-- Header -->
   <text x="30" y="38" class="logo">THE ODIN PROJECT</text>
-  <text x="30" y="64" class="title">Full Stack JavaScript</text>
+  <text x="30" y="64" class="title">Foundations</text>
 
   <!-- Current lesson -->
   <text x="30" y="86" class="label">Current lesson</text>
-  <text x="160" y="86" class="value">Working with APIs</text>
+  <text x="160" y="86" class="value">Learning GIT</text>
 
   <!-- Progress bar track -->
   <rect x="30" y="96" width="440" height="14" rx="7" fill="#21262d"/>
   <!-- Progress bar fill -->
-  <rect x="30" y="96" width="185" height="14" rx="7" fill="url(#barGradient)"/>
+  <rect x="30" y="96" width="101" height="14" rx="7" fill="url(#barGradient)"/>
   <!-- Percent label -->
-  <text x="470" y="90" text-anchor="end" class="pct">42% complete</text>
+  <text x="470" y="90" text-anchor="end" class="pct">23% complete</text>
 
   <!-- Projects completed -->
   <text x="30" y="138" class="label">Projects completed</text>
-  <text x="220" y="138" class="value">9 / 24</text>
+  <text x="220" y="138" class="value">0 / 24</text>
 
   <!-- Divider -->
   <line x1="30" y1="156" x2="470" y2="156" stroke="#30363d" stroke-width="1"/>
