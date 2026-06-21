@@ -48,8 +48,8 @@
   <rect x="14" y="14" width="672" height="332" rx="10" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.35"/>
 
   <!-- Name + handle -->
-  <text x="40" y="78" class="name">Anonymous Learner</text>
-  <text x="40" y="104" class="handle">@</text>
+  <text x="40" y="78" class="name">Ritu Raj</text>
+  <text x="40" y="104" class="handle">@rritu-018</text>
 
   <!-- Level -->
   <text x="40" y="168" class="level-num">5</text>
@@ -59,23 +59,23 @@
   <!-- Avatar circle -->
   <circle cx="590" cy="110" r="63" fill="none" stroke="#d4af37" stroke-width="3" opacity="0.85"/>
   <circle cx="590" cy="110" r="58" fill="url(#avatarGradient)"/>
-  <circle cx="590" cy="96" r="22" fill="#6b7785" opacity="0.55"/><path d="M 552 160 Q 590 116 628 160 L 628 168 L 552 168 Z" fill="#6b7785" opacity="0.55"/>
+  <image href="https://github.com/rritu-018.png?size=200" x="532" y="52" width="116" height="116" clip-path="url(#avatarClip)" preserveAspectRatio="xMidYMid slice"/>
 
   <!-- Joined date + course badge under avatar -->
-  <text x="590" y="190" text-anchor="middle" class="footer">Started: </text>
+  <text x="590" y="190" text-anchor="middle" class="footer">Started: May 12, 2026</text>
   <rect x="520" y="200" width="140" height="26" rx="6" fill="#0b1117" stroke="#d4af37" stroke-width="1" opacity="0.9"/>
   <text x="590" y="217" text-anchor="middle" class="badge-text">ODIN PROJECT</text>
 
   <!-- Lessons / Course stats row -->
-  <text x="40" y="236" class="stat-num">0</text>
-  <text x="68" y="236" class="stat-label">Lessons</text>
+  <text x="40" y="236" class="stat-num">11</text>
+  <text x="82" y="236" class="stat-label">Lessons</text>
 
-  <text x="220" y="236" class="stat-num">0/24</text>
-  <text x="298" y="236" class="stat-label">Projects</text>
+  <text x="220" y="236" class="stat-num">0/5</text>
+  <text x="282" y="236" class="stat-label">Projects</text>
 
   <!-- Current course + lesson -->
   <text x="40" y="266" class="lesson-label">CURRENT COURSE</text>
-  <text x="220" y="266" class="lesson-value">Foundations — Learning GIT</text>
+  <text x="220" y="266" class="lesson-value">Foundations — GIT Basics</text>
 
   <!-- Progress bar label -->
   <text x="660" y="280" text-anchor="end" class="pct">23% to graduation</text>
