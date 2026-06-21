@@ -17,6 +17,9 @@ Output: odin_progress_card.svg
 import json
 import datetime
 import os
+import base64
+import urllib.request
+import urllib.error
 
 INPUT_FILE = "progress.json"
 OUTPUT_FILE = "odin_progress_card.svg"
@@ -95,6 +98,43 @@ def level_for_percent(percent):
     return max(1, round(percent / 5))
 
 
+def fetch_avatar_data_uri(username, size=200, timeout=10):
+    """
+    Downloads the user's GitHub avatar and returns it as a base64 data URI
+    so it can be embedded directly inside the SVG. This is necessary
+    because browsers sandbox SVGs used as <img> sources and block them
+    from fetching external resources (like <image href="..."> pointing
+    at another domain) -- a self-contained data URI avoids that entirely.
+
+    Tries github.com first, then falls back to the avatars CDN endpoint.
+    Returns None if both fail, so the caller can fall back to a generic
+    placeholder glyph instead of breaking the build.
+    """
+    if not username:
+        return None
+
+    candidate_urls = [
+        f"https://github.com/{username}.png?size={size}",
+        f"https://avatars.githubusercontent.com/{username}?size={size}",
+    ]
+
+    for url in candidate_urls:
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "odin-progress-card"})
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                content_type = response.headers.get("Content-Type", "image/png")
+                image_bytes = response.read()
+                encoded = base64.b64encode(image_bytes).decode("ascii")
+                return f"data:{content_type};base64,{encoded}"
+        except Exception as e:
+            print(f"Warning: avatar fetch failed for '{url}' ({e}).")
+            continue
+
+    print(f"Warning: all avatar sources failed for '{username}'. "
+          "Falling back to placeholder glyph.")
+    return None
+
+
 def build_svg(data):
     name = escape_xml(data.get("name", "Anonymous Learner"))
     username = escape_xml(data.get("github_username", ""))
@@ -121,11 +161,11 @@ def build_svg(data):
     avatar_cx = 590
     avatar_cy = 110
     avatar_r = 58
-    avatar_url = f"https://github.com/{username}.png?size=200" if username else None
+    avatar_data_uri = fetch_avatar_data_uri(username)
 
-    if avatar_url:
+    if avatar_data_uri:
         avatar_markup = (
-            f'<image href="{escape_xml(avatar_url)}" '
+            f'<image href="{avatar_data_uri}" '
             f'x="{avatar_cx - avatar_r}" y="{avatar_cy - avatar_r}" '
             f'width="{avatar_r * 2}" height="{avatar_r * 2}" '
             f'clip-path="url(#avatarClip)" preserveAspectRatio="xMidYMid slice"/>'
