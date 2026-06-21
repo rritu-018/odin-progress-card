@@ -1,8 +1,12 @@
 {
+  "name": "Ritu Raj",
+  "github_username": "rritu-018",
+  "started_date": "2026-05-12",
   "course": "Foundations",
   "percent_complete": 23,
-  "current_lesson": "Learning GIT",
+  "current_lesson": "GIT Basics",
+  "lessons_completed": 11,
   "projects_completed": 0,
-  "projects_total": 24,
+  "projects_total": 5,
   "last_updated": "2026-06-21"
 }
